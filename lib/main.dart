@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class FadingTextAnimation extends StatefulWidget {
+  const FadingTextAnimation({super.key});
+
   @override
   _FadingTextAnimationState createState() => _FadingTextAnimationState();
 }
