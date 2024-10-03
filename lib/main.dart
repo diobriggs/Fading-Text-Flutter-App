@@ -32,9 +32,9 @@ class _FadingTextAnimationState extends State<FadingTextAnimation> {
     });
   }
 
-  void toggleFrame() {
+  void toggleFrame(bool value) {
     setState(() {
-      _showFrame = !_showFrame;
+      _showFrame = value;
     });
   }
 
@@ -57,14 +57,18 @@ class _FadingTextAnimationState extends State<FadingTextAnimation> {
                       ? Border.all(color: Colors.blueAccent, width: 3) // Frame
                       : null,
                 ),
-                child: AnimatedOpacity(
-                  opacity: _isVisible ? 1.0 : 0.0,
-                  duration: const Duration(seconds: 1),
-                  child: const Image(
-                    image: AssetImage('assets/your_image.png'), // Replace with your image path
-                    width: 200,
-                    height: 200,
-                    fit: BoxFit.cover,
+                child: GestureDetector(
+                  onTap: toggleVisibility, // Toggle visibility on tap
+                  child: AnimatedOpacity(
+                    opacity: _isVisible ? 1.0 : 0.0,
+                    duration: const Duration(seconds: 1),
+                    curve: Curves.easeInOut, // Smoother animation
+                    child: const Image(
+                      image: AssetImage('assets/v813-aew-22.png'),
+                      width: 200,
+                      height: 200,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
@@ -74,9 +78,7 @@ class _FadingTextAnimationState extends State<FadingTextAnimation> {
             SwitchListTile(
               title: const Text('Show Frame'),
               value: _showFrame,
-              onChanged: (value) {
-                toggleFrame();
-              },
+              onChanged: toggleFrame,
             ),
           ],
         ),
