@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,6 +16,8 @@ class MyApp extends StatelessWidget {
 }
 
 class FadingTextAnimation extends StatefulWidget {
+  const FadingTextAnimation({super.key});
+
   @override
   _FadingTextAnimationState createState() => _FadingTextAnimationState();
 }
@@ -37,6 +41,7 @@ class _FadingTextAnimationState extends State<FadingTextAnimation> {
         child: AnimatedOpacity(
           opacity: _isVisible ? 1.0 : 0.0,
           duration: const Duration(seconds: 1),
+          curve: Curves.easeInOut,
           child: const Text(
             'Hello, Flutter!',
             style: TextStyle(fontSize: 24),
